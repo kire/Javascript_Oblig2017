@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Oblig 3 | Oppgave 6</title>
+    
+      <!--Lager en style tag for størrelsen på bildene. Her tester jeg bare noe og det funka-->
+        <style>
+          img {
+          
+            display:inline-block;
+            width:100px;
+            height:100px;
+            max-height:10%;
+            float:left;
+          }
+
+        
+        </style>
+
+    <script>
+
+     
+      // Satt en style tag med img over for å sette fast størrelse på bildene
+      window.onload = oppstart;
+
+      function oppstart() {
+        document.getElementById("btn").onclick = ransomletter;
+      
+      }
+
+      function ransomletter() {
+        
+        // Tømmer printen hver gang knappen trykkes på
+        document.getElementById("print").innerHTML = ""; 
+
+      // Lager en variabel for valuen til input + tolowercase siden vi bare har små bokstaver og spiller den på ""
+        var inputsplit = document.getElementById("txt").value.toLowerCase().split("");
+       
+
+        // Lager en for løkke og en if test hvis inputen er et mellomrom, så viser den blank.png, så det ikke kommer error ellers viser den tallet i pinuten + png for bildet
+        for (var i = 0; i < inputsplit.length; i++) {
+          if (inputsplit[i] === " ") {
+            document.getElementById("print").innerHTML += "<img src=\"blank.png\">";
+          }
+          else {
+            document.getElementById("print").innerHTML += "<img src=\"" + inputsplit[i] + ".png\">";
+          }
+
+        }
+      }
+    </script>
+  </head>
+  <body>
+    
+<a href="Oppgave1.html">Oppgave1</a>
+    <a href="Oppgave2.html">Oppgave2</a>
+    <a href="Oppgave3.html">Oppgave3</a>
+    <a href="Oppgave4.html">Oppgave4</a>
+    <a href="Oppgave5.html">Oppgave5</a>
+    <a href="Oppgave6.html">Oppgave6</a>
+    <a href="Oppgave7.html">Oppgave7</a>
+    <a href="Oppgave8.html">Oppgave8</a>
+
+    <p>Fyll inn ønsket tekst i boksen nedenfor og trykk på knappen. Som et eksempel tok jeg navnet på verdens søteste mann i feltet</p>
+    <input id="txt" value="Tom Heine Natt">
+    <button id="btn" type="button">Ransom</button>
+    <p id="print"></p>
+
+  </body>
+</html>

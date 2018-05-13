@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 8</title>
+
+		<script>
+		
+			window.onload = oppstart;
+
+
+				var poeng = [140, 55, 45, 65, 45, 32, 23, 21, 18, 6, 18 ]; // array- første elementer i array er alltid 0
+			    //            0   1   2   3   4   5   6  7  8
+				
+				var asum = 0;
+					
+			for(var a = 0; a<poeng.length; a++){
+						
+			asum += (poeng[a]);
+							
+			}
+
+
+				function oppstart () {
+					
+					document.getElementById("btnSum").onclick = sum
+					document.getElementById("btnGjennomsnitt").onclick = gjennomsnitt
+					document.getElementById("btnstorste").onclick = storste
+					document.getElementById("btnInneholder").onclick = inneholder
+				
+
+				}
+				
+				
+
+				
+				function sum () {
+		
+
+				document.getElementById("utskrift6").innerHTML = "Arrayen sin sum er: " + asum;
+					
+				}
+
+				
+			
+
+				function gjennomsnitt (){
+		
+				
+
+				var gjennomsnitt = asum / poeng.length;
+					
+				
+	
+					document.getElementById("utskrift8").innerHTML ="Gjennomsnittet arrayen er " + gjennomsnitt.toFixed(2);
+
+		
+		}
+
+		
+
+		 function storste (){
+            
+            var storste = poeng[0];
+            
+            for (var a = 0; a < poeng.length; a++){
+                
+               if (storste < poeng[a]) {
+					storste = poeng [a];
+
+                }
+            }
+           
+            document.getElementById("utskrift10").innerHTML ="Det største tallet i arrayen er: " + storste;
+		}
+            
+        
+         // Dette var en litt tricky en, men fikk det til. Lager en variabel med navnet inhld og  setter den til false. Lager også en med navnet value for å slippe å skrive doucment.get ja. Setter også Id'en til inputen nerderst og en .value for å finne dens verdi. Lager en for løkke som vanlig som går igjennom arrayen med variabel a. Lager en if test at hvis arrayen inneholder valuen i inputen, så er inhld true. og en if og else test for utskrift
+		  function inneholder(){
+            
+            var inhld = false;
+            var value = parseInt(document.getElementById("verdi").value);
+            
+            
+            for (var a = 0; a < poeng.length; a++){
+     
+               if(poeng[a] === value){
+               		inhld = true;
+    
+            	}  
+            
+            	if (inhld === true ) {
+            		 document.getElementById("utskrift11").innerHTML = "Arrayen inneholder " + value;
+            	}
+            	else {
+            		document.getElementById("utskrift11").innerHTML = "Arrayen inneholder ikke " + value;
+            	}
+
+            } 
+             } 
+
+            
+
+		</script>
+		
+		
+	</head>
+	<body>
+		
+
+	<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+		
+		<p>Her er mine array verdier [140, 55, 45, 65, 45, 32, 23, 21, 18, 6, 18 ]</p>
+
+		<button id="btnstorste">Skriv ut det største tallet i arrayen</button>
+		<p id="utskrift10"></p>
+
+		<button id="btnSum">Skriv ut summen av arrayen</button>
+		<p id="utskrift6"></p>
+
+
+		<button id="btnGjennomsnitt">Skriv ut gjennomsnittet av arrayen</button>
+		<p id="utskrift8"></p>
+
+
+
+		<input type="number" id="verdi">
+		<button id="btnInneholder">Sjekk om listen inneholder et tall</button>
+		<p id="utskrift11"></p>
+
+		
+
+
+
+
+	
+	</body>
+</html>

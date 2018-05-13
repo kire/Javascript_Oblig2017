@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 5</title>
+
+		<script>
+		
+			
+
+		window.onload = oppstart;
+		
+		
+
+       
+		
+        function oppstart(){
+        	document.getElementById("btn").onclick = antall;
+
+        }
+
+		function antall(){
+         
+        // Denne tømmer listen hver gang knappen trykkes på   
+      	document.getElementById("liste").innerHTML = "";
+					
+					// Lager en tom array som brukeren skal fylle
+					var array = [0,0,0,0,0,0,0,0,0,0];
+					
+					// Lager en variabel for input, så jeg slepper å skrive det flere ganger
+					var inputverdi = document.getElementById("inputarray").value; 
+					
+			
+				
+						
+						// Lager en for løkke som går igjennom inputen og splitter alle tall ved ",". Lager også en for løkke som går fra tallet 0 til 9 og hver gang den finner et tall, så plusser den på arrayen.. Den andre løkken holder på så lenge a er mindre eller = 9. ellers hadde den stoppet på 8
+						
+						for (var i =0; i<inputverdi.length; i++){
+						
+							var inputvalue =  parseInt(inputverdi.split(",")[i]);
+							
+								for (var a=0; a<=9; a++){
+								
+									if (inputvalue ===	a){
+									
+										array[a]++;
+									}									
+								}
+							}
+
+							document.getElementById("utskrift").innerHTML = "Denne arrayen " + inputverdi +
+								
+								", Inneholder disse tallene antall ganger" + "</br>";
+							
+
+
+							for (var k=0; k<=9;k++){
+							
+								var utskriftliste	= document.createElement("li")
+								utskriftliste.innerHTML = "Antall ganger tallet " + k + " er i arrayen " + "=" + " " + array[k];	
+								document.getElementById("liste").appendChild(utskriftliste);
+								 // Lager element med id Li for en liste og lepper på appendchild for å få de under hverandre i liste
+
+							}
+
+							}
+							
+						
+							
+
+
+		
+		</script>
+		
+		
+	</head>
+	<body>
+		
+		<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+		
+		<p>Skrv inn en array som følger denne oppskriften: 1,2,34,4,5,6,7,55,6,7</p>
+		<p>Fyll ut dette i boksen og trykk på knappen</p>
+		
+		
+		<input id="inputarray">
+		<button id="btn">Antall</button>
+		<p id="utskrift"></p>
+		<ul id ="liste"></ul>
+
+
+
+
+
+	
+	</body>
+</html>

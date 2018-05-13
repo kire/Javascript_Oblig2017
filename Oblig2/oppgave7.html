@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+	<html>
+
+		<head>
+				<meta charset="utf-8" />
+				<title> Tittel </title>
+	
+				
+					<script>
+
+					
+							window.onload = oppstart;
+							
+							function oppstart() {  
+							
+								// Lager en for med var = tall. Setter tall = 0 og at den skal gå til den =100 og tall++ for å ta ett tall om gangen. Jeg bruker også appendchild for å lage det under hverandre. da trenger vi ikke <br>
+								for (var tall = 0; tall<=100; tall++) {  
+									var el = document.createElement("p");
+									el.innerHTML = tall;
+									document.getElementById("forlengs").appendChild(el);
+									
+								}		
+
+								// Nesten akkurat det samme bare at vi starter på 100 og går ned til 100. Setter også tall-- så den går nedover
+								for (var tall = 100; tall>0; tall--) {  
+									var el = document.createElement("p");
+									el.innerHTML = tall;
+									document.getElementById("baklengs").appendChild(el);
+									
+								}
+							
+
+								// Her starter vi også på 0 og går opp til 100, men vi legger til en ny var som deller alle tallene vi skriver ut på 2. Hele listen blir også delt på 2, så listen går til 50
+								for (var tall = 0; tall<=100; tall++) { 
+									
+									var del2 = tall / 2;
+									var el = document.createElement("p");
+									el.innerHTML = del2;
+									document.getElementById("del2").appendChild(el);
+									
+								}	
+
+								// Her endrer vi på varen fra i stad og setter at tallene som skal skrives ut må være delelig på 3. Altså de kan deles på 3 helt til de blir 0
+								for (var tall = 0; tall<=100; tall++) { 
+									
+									var el = document.createElement("p");
+
+									var del3 = (tall%3 ===0)
+
+									if (del3 === true) {
+										el.innerHTML = tall;
+										document.getElementById("del3").appendChild(el);
+									
+									}
+								}	
+							
+
+								// Her skal vi skrive ut alle partall, så vi tar tallet og gjor akkurat det samme som i forrige oppgave bare setter inn 3
+								for (var tall = 0; tall<=100; tall++) { 
+									
+									var el = document.createElement("p");
+
+									var partall = (tall%2 ===0)
+
+									if (partall === true) {
+										el.innerHTML = tall;
+										document.getElementById("partall").appendChild(el);
+									
+									}
+								}
+
+								// Her skal vi bare skrive ut oddetall, dette var en liten nøtt å knekke, men et oddetall vil gi 1 tilslutt etter deling. Så vi setter at hvis de kan deles på 2 og gi en i rest.
+								for (var tall = 0; tall<=100; tall++) { 
+									
+									var el = document.createElement("p");
+
+									var oddetall = (tall%2 ===1)
+
+									if (oddetall === true) {
+										el.innerHTML = tall;
+										document.getElementById("oddetall").appendChild(el);
+									
+									}
+								}	
+
+
+								// Her skal vi skrive annenhvert tall som positivt og negativt. Her setter vi at alle partallene skal skrives ut normalt og at hvis de ikke er oddetall ganger vi de med -1, så det blir det samme tallet bare minus seg selv. Annen hvert tall fra 0-100 er partall og oddetall og da funker derre
+								for (var tall = 0; tall<=100; tall++) { 
+									
+									var el = document.createElement("p");
+
+									var posneg = (tall%2 ===0)
+
+									if (posneg === true) {
+										el.innerHTML = tall;
+										document.getElementById("posneg").appendChild(el);
+									
+									}
+									
+									else if (posneg === false) {
+										el.innerHTML = tall*(-1);
+										document.getElementById("posneg").appendChild(el);
+									}
+
+								}
+
+
+							}
+				
+					</script>
+				
+				
+		</head>
+			
+			
+		<!--Setter h2 og id'er til de forskjellige oppgavene i en paragraph. og siden vi har appendchild blir de satt under hverandre-->
+		<body>
+			<h1>Oblig 2 - oppgave 7</h1>
+		
+			<h2>Forlengs fra 0 til 100</h2>
+			<p id="forlengs">
+
+			<h2>Baklengs fra 100 til 0</h2>
+			<p id="baklengs">
+
+			<h2>Delelig på 2 fra 0 til 100</h2>
+			<p id="del2">
+
+			<h2>Del på 3 fra 100 til 0</h2>
+			<p id="del3">
+
+			<h2>Partall fra 100 til 0</h2>
+			<p id="partall">
+
+			<h2>Oddetall fra 100 til 0</h2>
+			<p id="oddetall">
+
+			<h2>Annenhver positivt og negativt fra 100 til 0</h2>
+			<p id="posneg">
+
+			
+		</body>
+
+	</html>

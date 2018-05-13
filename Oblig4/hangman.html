@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="utf-8">
+		<title>Oblig 4 | Hangman</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+
+		<audio controls>
+
+			<source src="Elevator-music.mp3" type="audio/mpeg">
+
+		</audio>
+
+
+
+		
+		</div>
+
+
+
+		<script>
+			window.onload = tegn
+
+			// Lager en var for ord setter den til "erik" og lager en var med Array.from. Dette var en veldig nyttig funksjon som gjør en tekst til en array som kan indekseres på hver bokstsv. Gjør  at jeg slepper å lage en array med hver bokstav. Lager også en array som skal fylles med riktige ord senere
+			var word = "erik";
+
+			var ord = Array.from(word);
+
+			var ordprog = [];
+			
+		 	// Lager en function tegn med masse informasjon, blant annent setter getGontext til ctx og lager knapper. Setter også knapper til disabled intill du trykker på start
+			function tegn () {
+				ctx = document.getElementById("tegn").getContext("2d");
+				document.getElementById("btn").onclick = inneholder;
+				document.getElementById("start").onclick = tegnstolpe;
+				document.getElementById("hint").onclick = hintfunc;
+				document.getElementById("lucky").onclick = tegnresult3;
+				document.getElementById("btn").disabled=true;
+				document.getElementById("hint").disabled=true;
+				
+				var ul = document.getElementById("list");
+				// Lager en for løkke som går igjen order fra var word. Setter også style opacity til 0. så du ikke ser ordet før du skriver inn riktig bokstav. Jeg valgte å lage en liste i stedenfor understreker. Følte dette var bedre for meg
+				for(var i=0; i < ord.length; i++){
+				  var li = document.createElement("li");
+				  li.appendChild(document.createTextNode(ord[i]));
+				  ul.appendChild(li);
+				  li.style.opacity = 0;
+				}
+
+			}
+			// Function for hint
+			function hintfunc (){
+				document.getElementById("hinttext").innerHTML = "Et navn på 4 bokstaver";
+			}
+			// Lager en for løkke for om du har riktig ord, hvis var ord ikke er lik ordprog så skal den returne false, else så skal du vant melding vises og verdi settes til disabled, så du ikke kan skrive mer
+			function ordgjettet() {
+			    for(var i = ord.length; i--;) {
+			        if(ord[i] !== ordprog[i])
+			            return false;
+			    }
+			    document.getElementById("resultat").innerHTML = "Gratulerer du vant hehexd";
+			    document.body.style.backgroundColor = "pink";
+
+			    ctx.clearRect(0, 0, 280, 300);
+			    tegnresult2();
+					document.getElementById("verdi").disabled=true;
+					document.getElementById("btn").disabled=true;
+					document.getElementById("start").disabled=true;
+			    return true;
+			}
+			// Lager en functuin som sjekker om bokstaven du skrev inn er riktig. Hvis bokstaven du skrev inn er o order skal en melding vises og hvis det ikke er i ordet, så skal en annen melding vises
+			function inneholder(){
+            
+            var inhld = false;
+            var value = document.getElementById("verdi").value.toLowerCase();
+
+            if (value === "" || value === " ") {
+            	alert ("Skriv inn bokstaver takk")
+            	tegnresult3();
+            		document.getElementById("verdi").disabled=true;
+					document.getElementById("btn").disabled=true;
+					document.getElementById("start").disabled=true;
+
+            }
+
+            
+            
+            
+			for (var a = 0; a < ord.length; a++){
+
+               if(ord[a] === value){
+                       inhld = true;
+
+                }
+
+                if (inhld === true ) {
+                    document.getElementById("utskrift").innerHTML = "Riktig! bokstaven: " + value + " finnes i ordet";
+                    ordprog[a] = value
+                    ordgjettet();
+                     
+                    var ul = document.getElementById("list");
+					var items = ul.getElementsByTagName("li");
+
+					items[a].style.opacity = 1
+
+
+                     return;
+                }
+
+ 				
+            }
+            document.getElementById("utskrift").innerHTML = "Feil! bokstaven: " + value + " finnes ikke i ordet";
+                    vishangman();
+            }  		
+            	
+
+            
+           
+            // En function jeg lagde for å teste at alt ble tegnet, glem denne
+			function tegnalle () {
+				tegnstolpe();
+				tegnhode();
+				tegnkropp();
+				tegnvenstrehand();
+				tegnhoyrehand();
+				tegnvenstrebein();
+				tegnhoyrebein();
+			}
+
+				var delervist = 0;
+				// Lager en function for å vise hangman delene. Setter den til 0 og lager en haug med if og else if tester. Denne gjør at hvis ingen deler er vist, så skal hode vises, hvis 1 del er hvist, så skal kroppen vises etc. Og hvis deler hvist erlik 5, så har du tapt
+				function vishangman(){
+					if(delervist == 0){
+					tegnhode();
+					}
+					else if(delervist == 1){
+					tegnkropp();
+					}
+					else if(delervist == 2){
+					tegnvenstrehand();
+					}
+					else if(delervist == 3){
+					tegnhoyrehand();
+					}
+					else if(delervist == 4){
+					tegnvenstrebein();
+					}
+					else if(delervist == 5){
+					tegnhoyrebein();
+					ctx.clearRect(0, 0, 280, 300);
+					document.body.style.backgroundColor = "grey";
+
+					
+					tegnresult();
+					document.getElementById("verdi").disabled=true;
+					document.getElementById("btn").disabled=true;
+					document.getElementById("start").disabled=true;
+				
+					}
+					
+					
+
+
+				delervist++;
+
+				}
+
+
+				// Her kommer alle tegninge i canvas, stolpen, hodet, kropp, hender og bein
+
+			function tegnstolpe() {
+				ctx = document.getElementById("tegn").getContext("2d");
+				document.getElementById("resultat").innerHTML = "";
+				document.getElementById("btn").disabled=false;
+				document.getElementById("hint").disabled=false;
+				document.getElementById("riktigebokstaver").innerHTML = "Riktige bokstaver:";
+
+				ctx.beginPath();
+	
+				ctx.moveTo(60, 300);
+				ctx.lineTo(60, 2);
+				ctx.lineTo(170, 2);
+				ctx.lineTo(170, 25);
+			
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+				
+			}
+
+			function tegnhode() {
+	
+				ctx.beginPath();
+				ctx.arc( 170, 60, 35, 0, 2 * Math.PI );
+
+
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();	
+
+			}	
+			
+
+			function tegnkropp() {
+	
+				ctx.beginPath();
+				
+				ctx.moveTo(170, 95);
+				ctx.lineTo(170, 200);
+				
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+			}
+
+			function tegnvenstrehand() {
+	
+				ctx.beginPath();
+				
+				ctx.moveTo(170, 135);
+				ctx.lineTo(120, 160);
+				
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+
+			}
+
+			function tegnhoyrehand() {
+
+				ctx.beginPath();
+				
+				ctx.moveTo(170, 135);
+				ctx.lineTo(220, 160);
+				
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+
+			}
+
+			function tegnvenstrebein() {
+
+				ctx.beginPath();
+				
+				ctx.moveTo(170, 200);
+				ctx.lineTo(220, 230);
+				
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+
+			}
+			
+			function tegnhoyrebein() {
+
+				ctx.beginPath();
+				
+				ctx.moveTo(170, 200);
+				ctx.lineTo(120, 230);
+				
+				ctx.lineWidth = 3;
+				ctx.strokeStyle = "black";
+				ctx.stroke();
+
+			}
+			// Lager 2 functions for regultater, skriver tekst i canvas om du vant eller ikke og legger til bilde
+			function tegnresult () {
+				ctx.font = "30px Arial";
+				ctx.fillStyle = "red";
+				ctx.fillText("Game over",55,24);
+
+				var bilde = new Image();
+
+			    bilde.onload = function() {
+			      ctx.drawImage(bilde, 1, 30, 350, 280);
+			     };
+			    
+			    bilde.src = "bilder/gameover.png";
+			}
+
+			function tegnresult2 () {
+					ctx.font = "30px Arial";
+				ctx.fillStyle = "red";
+				ctx.fillText("You won",55,24);
+
+				var bilde = new Image();
+
+			    bilde.onload = function() {
+			      ctx.drawImage(bilde, 1, 30, 350, 280);
+			     };
+			    
+			    bilde.src = "bilder/youwon.png";
+			}
+
+				function tegnresult3 () {
+			
+
+				document.getElementById("verdi").disabled=true;
+				document.getElementById("btn").disabled=true;
+				document.getElementById("start").disabled=true;
+
+				document.getElementById("overskrift").innerHTML = "you done fucked up"
+				document.getElementById("underskrift").innerHTML = "Du trykte enten på ??? knappen eller fylte ikke inn boksen"
+				
+				var bilde = new Image();
+
+			    bilde.onload = function() {
+			      ctx.drawImage(bilde, 1, 30, 350, 300);
+			     };
+			    
+			    bilde.src = "bilder/ohno.png";
+			}
+
+
+		</script>
+	
+		
+	</head>
+	<body>
+		<h1 id="overskrift">Hangman - Trykk på start for å spille</h1>
+		<h4 id="underskrift">Bruk små bokstaver hehexd og refresh for å starte på nytt</h4>
+		<div id="knapp">
+		<button id="start">Start</button>
+		<button id="hint">Hint</button>
+		<button id="lucky">????</button>
+		<p id="hinttext"></p>
+		</div>
+		<h2 id="resultat"></h2>
+		<canvas id="tegn" height="300" width="280" ></canvas>  <!---onmousedown="vishangman()" VIKTIG: Her er første del av oppgaven, som viste hangman på hvert klikk--> 
+		<br>
+		<div id="hang">
+		<input type="text" id="verdi" placeholder="Skriv inn en bokstav" maxlength="1" pattern="[A-Za-z]" title="Only Alphabets">
+		<button id="btn">Sumbit</button>
+		</div>
+		<p id="utskrift"></p>
+		<p id="ordbrukt"></p>
+		<br>
+		<p id="riktigebokstaver"></p>
+		<ul id="list"></ul>
+
+		
+		
+		
+	</body>	
+</html>
+
+
+
+
+	

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig1-oppg2</title>
+		<script>
+		
+			window.onload = oppstart;
+
+			function oppstart () {
+				document.getElementById("btn1").onclick = alertriktig;
+				document.getElementById("btn2").onclick = alertgalt;
+				document.getElementById("btn3").onclick = alertgalt;
+				document.getElementById("btn4").onclick = alertriktig;
+				document.getElementById("btn5").onclick = alertriktig;
+				document.getElementById("btn6").onclick = alertgalt;
+
+			}	
+
+
+			function alertriktig () {
+				alert ("Riktig");
+			}
+
+			function alertgalt () {
+				alert ("Galt");
+			}	
+
+		</script>
+	</head>
+	<body>
+		<p>Dette er en oppgave i infoprog
+		<button id="btn1" type="button">Sant</button>
+		<button id="btn2" type="button">Usann</button>
+		</p>	
+
+		<p>Jeg går på høgskolen i vestfold
+		<button id="btn3" type="button">Sant</button>
+		<button id="btn4" type="button">Usann</button>
+		</p>
+		
+		<p>Jeg elsker Tom Heine
+		<button id="btn5" type="button">Sant</button>
+		<button id="btn6" type="button">Usann</button>
+		</p>
+	
+	</body>
+</html>

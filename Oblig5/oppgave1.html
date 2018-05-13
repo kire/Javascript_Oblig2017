@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>oblig 5</title>
+        <script>
+            
+            window.onload = oppstart;
+
+            var laster;
+
+            function oppstart() {
+
+                filLesing();
+            }
+
+
+            function filLesing() {
+
+                // l
+                laster = new XMLHttpRequest();
+                var fileName = "pres.dat" +"?id="+Math.random();
+                laster.open("GET",fileName,true);
+                laster.onreadystatechange = FerdigLastet;
+                laster.send();
+
+            }
+
+
+            function FerdigLastet() {
+    			
+    			// 200 betyr at alt gikk bra og da skal den gjøre dette
+                if(laster.readyState === 4 && laster.status === 200) {
+                    var linjer = laster.responseText.split("\n");
+                    
+                    // Splitter på ; og legger til bold på overskriften og new lines
+                    for(var i=0; i<linjer.length; i++) {
+                        var data = linjer[i].split(";");
+                        document.getElementById("utskrift").innerHTML += "<br/> <b>" + data[0] + " - " + data[1] + "</b> <br/>" + data[2] + "<br/>" + "Ledige Plasser: " + data[3] + "<br/>";
+                    }
+            
+                }
+
+                // Hvis den ikke ble ferdig lastet så er status 404 som er at noe gikk galt. gir en alert med at noe gikk galt
+                else if(laster.readyState === 4 && laster.status === 404) {
+                    alert("Noe gikk galt");
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <a href="oppgave1.html">Oppgave1</a>
+        <a href="oppgave2.html">Oppgave2</a>
+        <a href="oppgave4.html">Oppgave4</a>
+        
+        <h2>Oblig 5 | Oppg 1</h2>
+       
+        <p id="utskrift"></p>
+    </body>
+</html>

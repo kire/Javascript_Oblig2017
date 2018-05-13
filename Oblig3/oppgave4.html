@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 4</title>
+
+		<script>
+	
+  
+        
+        
+        
+		
+		window.onload = oppstart;
+		
+        
+        var navn = [" Hans"," Ole"," Nils"," Olav"," Per"," Knut"," Kari"," Line"," Pia"," Erik"," Thor"," Tom"," Heine"," Marius"," Test"," Abdulla"];
+        var tilfeldignavn = [];
+        
+		
+		
+        function oppstart(){
+        
+            document.getElementById("btn").onclick = tilfeldignavn;
+            
+		
+        }
+		
+		
+		function tilfeldignavn(){
+            
+            
+            tilfeldignavn = [];
+			
+			
+            for(i = 0; i < 3; i++){
+                var rndom = navn[Math.floor(Math.rndom(i)*navn.length)];
+               if(rndom !== tilfeldignavn[i] && rndom !== tilfeldignavn[i-1] && rndom !== tilfeldignavn[i-2]){
+                   
+                   tilfeldignavn.push(rndom);
+                   
+                   
+               }
+                else{
+                    
+                    tilfeldignavn();
+                    
+                }       
+                                   
+            }
+            
+            document.getElementById("utskrift").innerHTML = tilfeldignavn;
+            
+        }
+        
+       
+	
+	
+	</script>
+</head>
+<body>
+	
+	<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+
+
+	<p>Når jeg har valgt et tilfeldig navn, ville jeg krysset av på det navnet og valgt enda et nytt og sjekket om det var likt som et annet jeg har plukket</p>
+		<p>Trykk på knappen for å få 3 tilfeldige navn utifra denne listen: " Hans"," Ole"," Nils"," Olav"," Per"," Knut"," Kari"," Line"," Pia"," Erik"," Thor"," Tom"," Heine"," Marius"," Test"," Abdulla"</p>
+
+		
+		
+		
+		<button id="btn">Tilfeldig</button>
+		<p id="utskrift"></p>
+
+	
+</body>

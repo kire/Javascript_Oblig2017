@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>test</title>
+        <script>
+            
+            window.onload = oppstart;
+
+            var laster;
+
+            function oppstart() {
+            	document.getElementById("btn").onclick = registrer;
+
+               
+            }
+
+
+            function registrer() {
+				// Lager variabler for valuen av input boksene. Gjør det lettere å skrive inn senere
+				var kode = document.getElementById("inputkode").value;
+				var navn = document.getElementById("txtNavn").value;
+				var epost = document.getElementById("txtEpost").value; 
+
+				// Lage ren variabel for url med url'en som skal skrives inn med verdiene vi skriver inn
+				var url = "lagre.php?kode="+kode+"&navn="+navn+"&epost="+epost;
+		
+				laster = new XMLHttpRequest();
+				laster.open("GET",url,true);
+				laster.onreadystatechange = ferdiglastet;
+				laster.send();
+			}
+			// 200 betyr at alt gikk bra, da skal vi ha en alert som sier takk for registreringen
+			function ferdiglastet() {
+
+				if(laster.readyState === 4 && laster.status === 200) {
+					alert("Takk for registrering!");
+			
+				}
+		
+			}
+
+
+        </script>
+    </head>
+
+    <body>
+       	       <a href="oppgave1.html">Oppgave1</a>
+        <a href="oppgave2.html">Oppgave2</a>
+        <a href="oppgave4.html">Oppgave4</a>
+
+
+        <h2>Oblig 5 | Oppg 2</h2>
+        Presentasjons kode: <input id="inputkode" type="number" placeholder="612" />
+		Ditt navn: <input id="txtNavn" type="text" placeholder="Unbox Therapy" />
+		Din epost: <input id="txtEpost" type="text" placeholder="Unbox@therapy.com" />
+		<button id="btn">Registrer</button>
+
+    </body>
+</html>

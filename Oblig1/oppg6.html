@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>OPPG6</title>
+
+		<script>
+			
+		window.onload = oppstart;
+		var antall = 0;
+
+		function oppstart() {
+			document.getElementById("btnAdd").onclick = Add;
+		}
+
+		function Add() {
+
+			document.getElementById("liste").innerHTML = document.getElementById("liste").innerHTML + "<li>" + 
+			document.getElementById("txtA").value + " " + document.getElementById("txtV").value +"</li>";
+
+			antall++;
+			document.getElementById("aVarer").innerHTML = "Antall varer: " + antall;
+		}
+
+		</script>
+	</head>
+
+	<body>
+		<h1>Handleliste</h1>
+		<p>Legg til hvor mange og hvilken vare du skal ha og trykk på legg til!</p>
+
+		<p>Antall: <input id="txtA" type="text" /></p>
+		<p>Vare: <input id="txtV" type="text" /></p>
+		<button id="btnAdd" type="button">Legg til</button>
+
+		<h2>Min Liste:</h2>
+		<ul id="liste"></ul>
+		<p id="aVarer">Antall varer: </p>
+	</body>
+</html>

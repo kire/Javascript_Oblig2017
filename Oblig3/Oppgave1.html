@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 1</title>
+
+		<script>
+		
+			window.onload = oppstart;
+
+
+				var poeng = [55, 45, 65, 45, 32, 23, 21, 18, 6, 18 ]; // array- første elementer i array er alltid 0
+			    //            0   1   2   3   4   5   6  7  8
+				
+				var asum = 0;
+					
+			for(var a = 0; a<poeng.length; a++){
+						
+			asum += (poeng[a]);
+							
+			}
+
+
+				function oppstart () {
+					document.getElementById("btnforlengs").onclick = forlengs
+					document.getElementById("btnbaklengs").onclick = baklengs
+					document.getElementById("btnAnnenhver").onclick = annenhver
+					document.getElementById("btnUnder10").onclick = under10
+					document.getElementById("btnPartall").onclick = partall
+					document.getElementById("btnSum").onclick = sum
+					document.getElementById("btnEl").onclick = element
+					document.getElementById("btnGjennomsnitt").onclick = gjennomsnitt
+					document.getElementById("btnPartallsum").onclick = sumpartall
+					document.getElementById("btnMinsteEl").onclick = minsteEl
+					document.getElementById("btnInneholder").onclick = inneholder
+					document.getElementById("btnHvormange").onclick = hvormange
+
+
+
+
+
+				}
+				
+				function forlengs () {
+
+			
+				document.getElementById("utskrift").innerHTML = " ";
+		
+					for (var a = 0; a < poeng.length; a++){
+                
+                	if(a !== poeng.length-1){
+                    document.getElementById("utskrift").innerHTML += poeng[a] + ", " ;
+                	}
+                
+                	else if(a === poeng.length-1){
+                
+                    document.getElementById("utskrift").innerHTML += poeng[a];
+                    
+                	}
+			
+                	}
+				}
+
+				function baklengs () {
+					document.getElementById("utskrift2").innerHTML = " ";
+
+					for (var a = poeng.length-1; a>=0; a--){
+                
+					if(a !== 0){
+                    document.getElementById("utskrift2").innerHTML += poeng[a] + ", " ;
+                	}
+                
+                	else if(a === 0){
+                
+                    document.getElementById("utskrift2").innerHTML += poeng[a];
+                    
+                	}
+					}
+
+
+				}
+
+
+				function annenhver (){
+					document.getElementById("utskrift3").innerHTML = " ";
+
+				for (var a = 0; a<poeng.length; a++){
+				if(a % 2 === 0){
+                    document.getElementById("utskrift3").innerHTML += poeng[a] + ", " ;
+                }
+            }
+
+			}
+
+			function under10 (){
+				document.getElementById("utskrift4").innerHTML = " ";
+
+			for (var a = 0; a<poeng.length; a++){
+				if(poeng[a] < 10){
+                    document.getElementById("utskrift4").innerHTML += poeng[a] + ", " ;
+                }
+            }
+
+			}
+
+			function partall () {
+			
+			
+			document.getElementById("utskrift5").innerHTML = " ";
+
+			for (var a = 0; a<poeng.length; a++){
+				if( poeng[a] % 2 === 0 ){
+                    var even = poeng[a];
+                   
+					
+					
+					document.getElementById("utskrift5").innerHTML += poeng[a] + ", " ;
+                }
+				
+                
+            }
+		}        
+		// Satte summen global, men lager en variabel som heter asum og setter den til 0. Bruker en for løkke til å gå igjennom alle tallene og plusser de på asum. Etter den har gått igjennom blir alle tallene i arrayen plusset sammen
+		function sum () {
+		
+
+		document.getElementById("utskrift6").innerHTML = "Arrayen sin sum er: " + asum;
+					
+		}
+
+		function element () {
+            
+        document.getElementById("utskrift7").innerHTML = "Arrayen inneholder " + poeng.length + " elementer.";
+
+
+		}	
+
+			function gjennomsnitt (){
+		
+				
+
+				var gjennomsnitt = asum / poeng.length;
+					
+				
+	
+					document.getElementById("utskrift8").innerHTML ="Gjennomsnittet arrayen er " + gjennomsnitt;
+
+		
+		}
+
+		function sumpartall (){
+            
+            var sumpar = 0;
+            
+            for (var a = 0; a<poeng.length; a++){
+                if( poeng[a] % 2 === 0 ){
+                    
+                    sumpar += poeng[a];
+
+                }
+            }
+           document.getElementById("utskrift9").innerHTML ="Summen av partallene i arrayen er " + sumpar;
+		}
+
+		 function minsteEl (){
+            
+            var minste = poeng[0];
+            
+            for (var a = 0; a < poeng.length; a++){
+                
+                if(poeng[a] < poeng[a-1]){
+                    
+                    minste = poeng[a];
+                    
+                }
+            }
+           
+            document.getElementById("utskrift10").innerHTML ="Minste elementet i arrayen er " + minste;
+		}
+            
+        
+         // Dette var en litt tricky en, men fikk det til. Lager en variabel med navnet inhld og  setter den til false. Lager også en med navnet value for å slippe å skrive doucment.get ja. Setter også Id'en til inputen nerderst og en .value for å finne dens verdi. Lager en for løkke som vanlig som går igjennom arrayen med variabel a. Lager en if test at hvis arrayen inneholder valuen i inputen, så er inhld true. og en if og else test for utskrift
+		  function inneholder(){
+            
+            var inhld = false;
+            var value = parseInt(document.getElementById("verdi").value);
+            
+            
+            for (var a = 0; a < poeng.length; a++){
+     
+               if(poeng[a] === value){
+               		inhld = true;
+    
+            	}  
+            
+            	if (inhld === true ) {
+            		 document.getElementById("utskrift11").innerHTML = "Arrayen inneholder " + value;
+            	}
+            	else {
+            		document.getElementById("utskrift11").innerHTML = "Arrayen inneholder ikke " + value;
+            	}
+
+            } 
+             } 
+
+            // Ganske lik som forrige oppgave. Her gjør vi nesten det samme, bare at vi legger til en var for antall ganger de vises og setter den til 0. Lagger en for løkke som vanlig, men hver gang tallet finnes i arrayen, skal antallet plusses med 1. Lager en true eller false bare for å øve meg på dette.
+            function hvormange () {
+           		var hvrmng = false;
+           		var antall = 0;
+            	var value = parseInt(document.getElementById("howmny").value);
+            
+            	for (var a = 0; a < poeng.length; a++){
+            		if (poeng[a] === value) {
+            			antall += 1;
+            			hvrmng = true;
+            		}
+            	
+            	}
+            	 if (hvrmng === true) {
+            	 	document.getElementById("utskrift12").innerHTML = value + " Finner vi " + antall + " ganger i Arrayen";
+            	 }
+            	 
+            	 else {
+            	 	document.getElementById("utskrift12").innerHTML = value + " Finner vi " + antall + " ganger i Arrayen";
+            	 }
+            }
+                    
+                 
+          
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+		
+		
+	</head>
+	<body>
+		
+	<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+
+		<p>Her er mine array verdier [55, 45, 65, 45, 32, 23, 21, 18, 6, 18 ];</p>
+
+		<section>
+		<br><button id="btnforlengs">Skriv ut arrayen</button>
+		<p id="utskrift"></p>
+		</section>
+		
+		<button id="btnbaklengs">Skriv ut arrayen baklengs</button>
+		<p id="utskrift2"></p>
+
+		<button id="btnAnnenhver">Skriv ut annen hver</button>
+		<p id="utskrift3"></p>
+
+		<button id="btnUnder10">Skriv ut verdier under 10</button>
+		<p id="utskrift4"></p>
+
+		<button id="btnPartall">Skriv ut partall</button>
+		<p id="utskrift5"></p>
+
+		<button id="btnSum">Skriv ut summen av arrayen</button>
+		<p id="utskrift6"></p>
+
+		<button id="btnEl">Skriv ut antall elementer</button>
+		<p id="utskrift7"></p>
+
+		<button id="btnGjennomsnitt">Skriv ut gjennomsnittet av arrayen</button>
+		<p id="utskrift8"></p>
+
+		<button id="btnPartallsum">Skriv ut summen av partallene i arrayen</button>
+		<p id="utskrift9"></p>
+
+		<button id="btnMinsteEl">Skriv ut det minste Elementet i arrayen</button>
+		<p id="utskrift10"></p>
+
+		<input type="number" id="verdi">
+		<button id="btnInneholder">Sjekk om listen inneholder et tall</button>
+		<p id="utskrift11"></p>
+
+		<input type="number" id="howmny">
+		<button id="btnHvormange">Sjekk hvor mange ganger tallet forekommer i arrayen</button>
+		<p id="utskrift12"></p>
+
+
+
+
+	
+	</body>
+</html>

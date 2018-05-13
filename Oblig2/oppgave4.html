@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Oblig2-opp4</title>
+	
+
+	<!--Legger til style tag, så man faktisk kan se teksten når bakgrunnen er blå hehe xdd-->
+	<style>
+		#utskrift {
+			color: white;
+		}
+
+	</style>
+				
+	<script>
+				
+		window.onload = oppstart;
+		
+		// Setter interval interval for fuksjonen, så den sjekker hva klokken og oppdaterer seg. Vet ikke helt hvor mye, men virker som 100 spammer xd
+
+		function oppstart() {
+		setInterval(timecheck, 100);
+								
+							
+		}
+			
+		// Lager funksjonen timecheck med variabler for new date og get hours. Get hours gir oss fra 00-23 i timer. Kunne også tatt med getminutes, men siden jeg går etter timer, så gjorde jeg ikke det. new date sjekker tiden på devicen vår
+
+		function timecheck() {				
+								
+		var tid = new Date();
+						
+
+		var hour = tid.getHours();
+								
+			// Kjører if tester for å gi en spesifikk verdi når klokken er erlik eller større enn 7 og erlik eller mindre enn 21. Lager også en else tag for de resterende timene som er 22-6. Kan se på disse som når du er våken er fargen rød og når du sover er fargen blå. Har også linker paragrafen min i if og else funskjonene, så den endrer innerhtml altså teksten til paragrafen fra "g" til det klokken er			
+	
+			if (hour>=7 && hour <=21) {
+				document.getElementById("utskrift").innerHTML = "Klokken er mellom 07:00 og 21:00";
+				document.body.style.backgroundColor = "red";
+
+			 } 
+
+			 else {
+         		document.getElementById("utskrift").innerHTML = "Klokken er mellom 22:00 og 07:00";
+         		document.body.style.backgroundColor = "blue";
+
+
+			}
+
+
+		}
+								
+					
+								
+</script>
+
+		</head>
+		
+		<body>
+			<h1>Oblig 2 - oppgave 4</h1>
+		
+			<p id="utskrift">Hvis du ser denne, så funker ikke koden min</p>
+			
+			<p id="klokka"></p>
+		</body>
+
+	</html>

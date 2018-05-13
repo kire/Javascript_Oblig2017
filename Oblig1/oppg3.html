@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Test</title>
+		<script>
+		
+			window.onload = oppstart;
+
+			function oppstart () {
+				document.getElementById("btnMinus").onclick = minus;
+				document.getElementById("btnGange").onclick = gange;
+				document.getElementById("btnSummer").onclick = summer;
+				document.getElementById("btnDele").onclick = dele;
+			}	
+
+			function minus() {
+				var tall1 = document.getElementById("txtTall1").value.replace("," , ".");
+				var tall2 = document.getElementById("txtTall2").value.replace("," , ".");
+
+				var total = tall1 - tall2;
+
+				document.getElementById("utskrift").innerHTML = total;
+			}
+
+			function gange() {
+				var tall1 = document.getElementById("txtTall1").value.replace("," , ".");
+				var tall2 = document.getElementById("txtTall2").value.replace("," , ".");
+
+				var total = tall1 * tall2;
+
+				document.getElementById("utskrift").innerHTML = total;
+			}
+
+			function summer() {
+				var tall1 = document.getElementById("txtTall1").value.replace("," , ".");
+				var tall2 = document.getElementById("txtTall2").value.replace("," , ".");
+
+				var total = +tall1 + +tall2;
+
+				document.getElementById("utskrift").innerHTML = total;
+			}
+
+			function dele() {
+				var tall1 = document.getElementById("txtTall1").value.replace("," , ".");
+				var tall2 = document.getElementById("txtTall2").value.replace("," , ".");
+
+				var total = tall1 / tall2;
+
+				document.getElementById("utskrift").innerHTML = total;
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<p> Tall 1 <input id="txtTall1" type="text" /><br>
+			Tall 2 <input id="txtTall2" type="text" /><br>
+			Fyll ut boksene over med tall og klikk på en knapp!
+			<br>
+			<button id="btnMinus" type="button">Minus</button>
+			<button id="btnGange" type="button">Gange</button>
+			<button id="btnSummer" type="button">Summer</button>
+			<button id="btnDele" type="button">Dele</button>
+		</p>
+		<output id="utskrift">0</output>
+	</body>
+</html>

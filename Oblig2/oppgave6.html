@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+	<html>
+
+		<head>
+				<meta charset="utf-8" />
+				<title>Oblig2-oppg6</title>
+	
+				
+					<script>
+
+					
+							window.onload = oppstart;
+							
+							function oppstart() {  
+								document.getElementById("btn").onclick = rekkeregn;
+							
+							}
+							
+							function rekkeregn() {
+	
+						    //Lager en variabel for Id'en til paragrafen nederst på siden, der skal tallene også skrives ut
+						    var tallrekke = document.getElementById("tallrekke");
+						   
+						 
+
+						    //Lager en variabel for hvilket tall som skal skrives ut og hvor mange ganger det skal skrives ut
+						    var tall = document.getElementById("tall").value;
+						    var antall = parseInt(document.getElementById("antall").value);
+
+
+						    //Lager en for løkke med variablen rekke. 
+						    for (var rekke = 0; rekke < antall; rekke++) {
+
+						        tallrekke.innerHTML += tall + "<br>";
+
+						    }
+
+
+
+
+						}
+				
+					</script>
+				
+				
+		</head>
+			
+			
+
+		<body>
+			<h1>Oblig 2 - oppgave 6</h1>
+		
+		
+			
+			<!--Her legger jeg inn paragrafer for alle input boksene samt placeholder i inputene for design. Setter også type number på den nederste input boksen for lette innskrivning av nummer. Siste paragrafen er for utskrivning av nummer og har ikke en slutt. Kunne også brukt text area her-->
+			  <p>Skriv inn et tall eller en tekst</p>
+			  <input type="text" id="tall" placeholder="Tall">
+              <p>Skriv inn hvor mange ganger du vil at veriden over skal skrives ut</p>
+              <input type="number" id="antall" placeholder="Antall">
+              <button id="btn"> Lag rekke </button>
+
+              <p id="tallrekke">
+
+
+			
+		</body>
+
+	</html>

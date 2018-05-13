@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Oblig2-oppg2</title>
+    <script>
+
+      window.onload = oppstart;
+
+      function oppstart() {
+        document.getElementById("btnreg").onclick = registrer;
+    }
+
+
+    function registrer() {
+
+    // Bruker samme variabler fra oppgave 1 og legger til en ny for passordgjennta "litt for langt var navn spør du meg men jaja"
+
+    var brukernavn = document.getElementById("brukernavn").value;
+    var passord = document.getElementById("passord").value;
+    var passordgjennta = document.getElementById("passordgjennta").value;
+
+    
+
+  //Kjører test for å sjekke at det står noe i begge feltene, at passordene har 5 tegn eller fler og en for at passordene skulle være like
+    if((brukernavn.length < 1) || (passord.length < 1) || (passordgjennta.length < 1)) {
+          tmelding = "Du må fylle inn alle feltene";
+        }
+
+
+        else if((passord.length < 6) || (passordgjennta.length < 6)) {
+          tmelding = "Passordet må inneholde 5 tegn";
+        }
+
+
+        else if(passord !== passordgjennta) {
+          tmelding = "Passordene er ikke like";
+        }
+
+        else {
+          tmelding = "Takk for at du registrerte deg";
+        }
+
+  document.getElementById("tilbakemelding").innerHTML = tmelding;
+
+  }
+
+    </script>
+  </head>
+  <body>
+      <h1>Oblig 2 - oppgave 2</h1>
+
+      <input type="text" placeholder="Brukernavn" id="brukernavn"><br>
+      <input type="text" placeholder="Passord" id="passord"><br>
+      <input type="text" placeholder="Gjennta passord" id="passordgjennta"><br>
+      <button id="btnreg"> Registrer </button> <br>
+      <h2 id="tilbakemelding"> </h2>
+
+
+  </body>
+</html>

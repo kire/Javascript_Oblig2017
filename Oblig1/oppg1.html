@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig1-oppg1</title>
+		<script>
+		
+			window.onload = oppstart;
+
+			function oppstart () {
+				document.getElementById("btn1") .onclick = showmsg;
+				document.getElementById("btn2") .onclick = showmsg2;
+
+			}	
+
+
+			function showmsg () {
+				document.getElementById("utskrift") .innerHTML = "Hei på deg";
+			}
+
+			function showmsg2 () {
+				document.getElementById("utskrift") .innerHTML = "Ha det bra";
+			}	
+
+		</script>
+	</head>
+	<body>
+		<button id="btn1" type="button">Klikk her</button>
+		<button id="btn2" type="button">Klikk her</button>
+		<p id="utskrift"></p>
+	</body>
+</html>

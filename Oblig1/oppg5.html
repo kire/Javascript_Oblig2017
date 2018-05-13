@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="utf-8">
+		<title>DDDD</title>
+		<script>
+			window.onload = tegn
+
+			function tegn () {
+				var ctx = document.getElementById("tegn").getContext("2d");
+
+					//Selvet huset
+
+					ctx.beginPath ();
+					ctx.rect(150,250,300,300);
+					ctx.fillStyle = "green";
+					ctx.fill();
+					ctx.strokeStyle = "red";
+					ctx.stroke();
+
+					//Taket
+
+  				  	ctx.beginPath();
+				    ctx.moveTo(100,260);
+				    ctx.lineTo(300,100);
+				    ctx.lineTo(500,260);
+				    ctx.fillStyle = "black";
+				    ctx.fill();
+				    
+					
+				    //Døra
+
+					ctx.beginPath ();
+					ctx.rect(350,450,50,100);
+					ctx.fillStyle = "white";
+					ctx.fill();
+					ctx.strokeStyle = "black";
+					ctx.stroke();
+
+					// Dørhåndtak
+
+					ctx.beginPath ();
+					ctx.rect(390,500,11,5);
+					ctx.fillStyle = "black";
+					ctx.fill();
+
+					// Vinduer
+
+					ctx.beginPath ();
+					ctx.rect(175,310,50,50);
+					ctx.rect(225,310,50,50);
+					ctx.rect(175,360,50,50);
+					ctx.rect(225,360,50,50);
+					ctx.fillStyle = "white";
+					ctx.fill();
+					ctx.strokeStyle = "black";
+					ctx.stroke();
+
+			}
+
+
+			
+		</script>
+		<style>
+		#tegn {
+			border-style: dotted;
+			
+		</style>
+		
+	</head>
+	<body>
+		<canvas id="tegn" height="600" width="600"></canvas>
+			
+		
+	</body>	
+</html>
+
+
+
+
+	

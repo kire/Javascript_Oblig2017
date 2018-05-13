@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Testside</title>
+<script>
+	window.onload = oppstart;
+	
+	var laster; //xmlhttp
+	
+	function oppstart() {
+	
+		
+		laster = new XMLHttpRequest();
+		
+		var filnavn = "yr.proxy.php" +"?id="+Math.random();
+		
+		laster.open("GET",filnavn,true);
+		laster.onreadystatechange = ferdigLastet;
+		laster.send();
+	
+	}
+	
+	
+	function ferdigLastet() {
+	
+		
+	
+		if(laster.readyState === 4 && laster.status === 200) {
+		
+			var data = laster.responseXML;
+			
+			
+			
+			// childNodes[0].nodeValue   tilsvare innerHMTL 
+			
+			
+			var sted = data.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			
+			var varsel = data.getElementsByTagName("forecast")[0].getElementsByTagName("body")[0].childNodes[0].nodeValue;
+			
+			
+			var temperatur = data.getElementsByTagName("observations")[0].getElementsByTagName("temperature")[0].attributes.getNamedItem("value").value;
+			
+			var symbol = data.getElementsByTagName("forecast")[0].getElementsByTagName("symbol")[0].attributes.getNamedItem("var").value;
+			
+			//alert(sted);
+			
+			document.getElementById("stedsnavn").innerHTML = sted;
+			document.getElementById("utskrift").innerHTML = varsel;
+			
+			document.getElementById("btn").onclick = temperaturr;
+			document.getElementById("symbol").src = "https://symbol.yr.no/grafikk/sym/b100/"+symbol+".png";
+			
+			
+			if (temperatur >=-10 && temperatur <=5) {
+				document.getElementById("kaldt").innerHTML = "Nå er det kaldt (blå bakgrunn)";
+				document.body.style.backgroundColor = "DodgerBlue ";
+
+			 } 
+
+			 else {
+         		document.getElementById("kaldt").innerHTML = "Nå er det varmt (rød bakgrunn)";
+         		document.body.style.backgroundColor = "red";
+
+
+
+		}
+		
+		function temperaturr () {
+			document.getElementById("temp").innerHTML = temperatur;
+		}
+	
+
+
+}
+
+	}
+
+
+
+	
+	
+	
+</script>
+
+</head>
+<body>
+       <a href="oppgave1.html">Oppgave1</a>
+        <a href="oppgave2.html">Oppgave2</a>
+        <a href="oppgave4.html">Oppgave4</a>
+
+
+<h1 id="stedsnavn"></h1>
+<p id="kaldt"></p>	
+<p id="utskrift"></p>
+
+<button id="btn">Vis temperatur</button>
+<p id="btntext">Nå er det <span id="temp">??</span> grader ute...</p>	
+
+<img src="#" alt="Bilde" id="symbol"/>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Oblig2-oppg1</title>
+    <script>
+
+      window.onload = oppstart;
+
+      function oppstart() {
+        document.getElementById("btnreg").onclick = registrer;
+    }
+
+
+    function registrer() {
+
+    // Lager variabler med getElementById for brukernavn og passord. jeg elsker variabler
+
+    var brukernavn = document.getElementById("brukernavn").value;
+    var passord = document.getElementById("passord").value;
+
+    
+    // Kjører if test for å se om feltene er fylt ut og legger til en output på om de har fylt ut eller ikke
+
+    if((brukernavn.length < 1) || (passord.length < 1)){
+
+    tmelding = "Fyll ut begge boksene"
+  }
+    else{
+    
+    tmelding = "Du har blitt registrert"
+  }
+
+
+  document.getElementById("tilbakemelding").innerHTML = tmelding;
+
+  }
+
+    </script>
+  </head>
+    <!--Legger til inputs med id'er som er nevnt over og og en button for å utføre onclick  -->  
+  <body>
+      <h1>Oblig 2 - oppgave 1</h1>
+
+      Brukernavn: <input type="text" id="brukernavn"><br>
+      Passord: <input type="text" id="passord"><br>
+      <button id="btnreg"> Registrer </button> <br>
+      <h3 id="tilbakemelding"> </h3>
+
+
+  </body>
+</html>

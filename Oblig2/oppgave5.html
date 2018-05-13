@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>oblig 2-oppgave 5</title>
+		<script>
+	
+			
+			window.onload = oppstart; 
+			
+			function oppstart() {
+
+				document.getElementById("btn").onclick = spaa;
+
+			}
+      // Lager variabler for lengde på navn, alder, høyde og kjønn. Disse er essentielle i oppgaven
+			function spaa() {
+				var navnlengde = document.getElementById("txtNavn").value.length;
+				var alder = document.getElementById("txtAlder").value;
+				var hoyde = document.getElementById("txtHoyde").value;
+				var kjonn = document.getElementById("kjonn").value;
+
+
+
+			// Her lager vi en if test at hvis kjønnet er mann, så ganger vi navnlengde med alder minus hoyde. Vi setter også av hvis mverdi er et par tall altså hvis vi kan dele det på 2 og få 0. så får vi en settning. hvis det blir oddetall, så får vi en annen setning
+
+			if(kjonn == "mann"){
+			var mverdi = navnlengde * alder - hoyde;
+
+			if( mverdi % 2 == 0){
+				document.getElementById("utskrift").innerHTML = "Det vil gå deg godt her i verden.  <br> For at spådommen skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+			}
+			else{
+				document.getElementById("utskrift").innerHTML =  "Stakkars deg! Alt kommer til å gå deg galt. <br> For at spådommen ikke skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+			}
+		}
+			
+			//Her gjør vi akkurat det samme, men bare med at hvis kjønnet er kvinne så skal vi gange alder med hoyde minus 3. Her har vi også hvis den magiske verdien blir et par tall så skal et setning bli skrevet ut og hvis det er et oddetall kommer en annen setning. Vi setter mverdi % 2 == 0 siden et partall skal kunne bli 0. Vi kunne satt == 1 og da ville det fungert motsatt
+			else if(kjonn == "kvinne"){
+			var mverdi2 = alder * hoyde - 3;
+			
+			if( mverdi2 % 2 == 0){
+				document.getElementById("utskrift").innerHTML = "Det vil gå deg godt her i verden.  <br> For at spådommen skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+			}
+			else {
+				document.getElementById("utskrift").innerHTML =  "Stakkars deg! Alt kommer til å gå deg galt. <br> For at spådommen ikke skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+			}
+		}
+
+	}
+
+
+
+		</script>
+	</head>
+	<body>
+		<h1>Oblig 2 - oppgave 5</h1>
+
+		<input type="text" placeholder="Navn" id="txtNavn"> <br>
+		<input type="text" placeholder="Alder" id="txtAlder"> <br>
+		<input type="text" placeholder="Høyde cm" id="txtHoyde"> <br>
+		
+		<select id ="kjonn"> 
+			<option value =	"mann">Mann</option>
+			<option value =	"kvinne">Kvinne</option>
+		</select>
+
+		<br>
+
+		<button type="button" id="btn">Spådom</button>
+
+
+		<p id="utskrift"></p>
+		
+
+	</body>
+</html>

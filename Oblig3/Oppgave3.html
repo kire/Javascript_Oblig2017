@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 3</title>
+
+		<script>
+		
+			
+
+		window.onload = oppstart;
+		
+		//Lager 2 arrayer, en med navn og en tom. Her skal jeg velge 3 forskjellige navn fra den første arrayen og sende de til den nye og skrive ut
+        var navn = [" Hans"," Ole"," Nils"," Olav"," Per"," Knut"," Kari"," Line"," Pia"," Erik"," Thor"," Tom"," Heine"," Marius"," Test"," Abdulla"];
+        var tilfeldig = [];
+
+        
+
+       
+		
+        function oppstart(){
+        	document.getElementById("btnutskrift").onclick = tilfeldignavn;
+
+        }
+		//Først setter jeg tilfeldig arrayen til å være tom hver gang jeg trykker på knappen. Slik at navnene ikke stacker side lengs
+		function tilfeldignavn(){
+           	
+           	 
+           	 tilfeldig = [];
+			
+			// Lager en for løkke, så lenge 3 er større en variablen, da skal den gå igjennom lista, dette gjør at den ikke går videre enn 3, så vi kan skrive f.eks 5 da skriver den ut 5 navn. Setter var random til math.floor etc og math.random med variablen a som henter 3 random verider og ganger det med lengden på arrayen. Setter også den tomme arrayen til å være lik den første arrayen med 3 tilfeldige verier og skriver ut
+            for(var a = 0; a < 3; a++){
+                
+            	var random = Math.floor(Math.random(a)*navn.length)
+
+
+                tilfeldig[a] = navn[random]               
+            }
+            
+            document.getElementById("utskrift").innerHTML = tilfeldig;              
+           
+
+            
+        }
+
+		
+		</script>
+		
+		
+	</head>
+	<body>
+		
+		<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+		
+		<p>Trykk på knappen for å få 3 tilfeldige navn utifra denne listen: "Hans","Ole","Nils","Olav","Per","Knut","Kari","Line","Pia"</p>
+
+		
+		
+		
+		<button id="btnutskrift">Tilfeldig</button>
+		<p id="utskrift"></p>
+
+
+
+
+	
+	</body>
+</html>

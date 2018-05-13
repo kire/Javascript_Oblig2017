@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 7</title>
+
+		<script>
+					
+						window.onload = oppstart; 
+						
+						function oppstart() {
+							
+							
+				//Her lager jeg 3 if / else tester som er hoveddelen oppgaven. Denne sjekker om tallene er innenfor intervallen
+							if (InnenforInterval(16, 10, 14)) {
+								message("utskrift", "True")
+							} else {
+								message("utskrift", "False")
+							}
+						
+						
+							if (InnenforInterval(78, 1, 100)) {
+								message("utskrift2", "True")
+							} else {
+								message("utskrift2", "False")
+							}
+
+							if (InnenforInterval(100, 99, 101)) {
+								message("utskrift3", "True")
+							} else {
+								message("utskrift3", "False")
+							}
+						}
+						
+						function message(id, melding) {
+							document.getElementById(id).innerHTML = melding;
+						}
+						
+					
+					
+						//Lager en funksjon som sjekker om et tall er innenfor. Altså et tall som er innenfor et tall fra og til. feks er 3 innenfor 1 og 6. ye
+						function InnenforInterval(tall, fra, til) {
+						
+							
+							//Lager en if og else test som sjekker om tallet er i midten. Denne brukte vi også over
+							if (tall < til && tall > fra) {
+								return true;
+							} else {
+								return false;
+							}
+						
+						
+				
+						}
+					
+					
+				 </script>
+			</head>
+			
+			
+			<body>
+				
+
+			<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+				
+				<h2>3 satte tall som blir sjekket om de er innenfor intervallen</h2>
+				<p>Kan vi finne tallet 16 mellom 10 og 14</p>
+				<p id="utskrift"></p>
+				<p>Kan vi finne tallet 78 mellom 1 og 100</p>
+				<p id="utskrift2"></p>
+				<p>Kan vi finne tallet 100 mellom 99 og 101</p>
+				<p id="utskrift3"></p>
+			
+	
+			
+			</body>
+			
+			
+			
+</html>
+
+

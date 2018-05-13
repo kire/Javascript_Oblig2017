@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Oblig2-oppg3</title>
+    <script>
+
+      window.onload = oppstart;
+
+      function oppstart() {
+         document.getElementById('btn').onclick = registrer;
+    }
+
+
+    function registrer() {
+
+      // bruker variabler fra forrige oppgave, men legger til var dato og var idag
+    var brukernavn = document.getElementById("brukernavn").value;
+    var passord = document.getElementById("passord").value;
+    var passordgjennta = document.getElementById("passordgjennta").value;
+    
+    var dato = new Date(document.getElementById("bursdag").value);
+    var idag = new Date();
+
+    // Lager en variabel for om brukeren er 18 og setter den til false. Hvis den er satt til true, så vil alle som registrerer seg gå igjennom uansett alder
+    var over18 = false;
+    
+
+
+
+    
+    //Lager en if test med dette året minus året brukeren ble født. vil takke tom heine for denne ideen. hadde ikke tenkt på det
+    if (idag.getFullYear() - dato.getFullYear() > 18) {
+        over18 = true;
+        // Her lager vi også en test på hvis året i år minus bursdagsåret til person er 18, så må vi gjøre det samme med måned og dag. Dette var alt for vanskelig å komme på
+    } else if (idag.getFullYear() - dato.getFullYear() === 18) {
+
+        if (idag.getMonth() - dato.getMonth() >= 0) {
+        
+        if (idag.getDate() - dato.getDate() >= 0) {
+                over18 = true;
+            }
+            
+        }
+
+
+    }
+
+
+
+    //Kjører mange if tester som vi også har brukt i oppgave 2. Vi kjører også if tester for variabelen vi lagde over om brukeren er 18
+    if ((brukernavn.length < 1) && (passord.length < 1)) {
+        tmelding = "Vennligst fyll inn alle feltene"     
+       
+    } 
+
+    else if (passord.length < 1) {
+        tmelding = "Venligst velg ett passord"
+           
+    } 
+
+    else if (brukernavn.length < 1) {
+        tmelding = "Venligst skriv inn navn"
+            
+    } 
+
+    else if (passord.length < 6) {
+        tmelding = "Passordet må inneholdet mer enn 5 tegn"
+           
+    } 
+
+    else if (passord !== passordgjennta) {
+        tmelding = "Passordene er ikke like";
+        
+    } 
+        // If en else if test hvis variabelen over18 er false
+    else if (over18 === false) {
+        tmelding = "Du må være over 18 år for å kunne registrere deg";
+    } 
+
+    else {
+        tmelding = "Takk for registreringen"
+    }
+
+//setter  id'en til tilbakemelding teksten til tmelding for å skrive mindre :)
+    document.getElementById("tilbakemelding").innerHTML = tmelding;
+}
+
+    </script>
+  </head>
+  <body>
+    <h1>Oblig 2 - oppgave 3</h1>
+
+<!--Lager samme som på oppgave 2, bare at vi setter <input> til date for å velge dato, setter også verdien til en dato, tusen takk google-->
+    <input type="text" id="brukernavn" placeholder="Navn"><br>
+    <input type="text" id="passord" placeholder="Passord"><br>
+    <input type="text" id="passordgjennta" placeholder="Gjennta passord"><br>
+    Skriv inn din bursdag: <input type="date" id="bursdag" value= "2017-09-29"><br>
+
+    <button id="btn"> Registrer </button> <br>
+
+    <h2 id="tilbakemelding"> </h2>
+
+
+
+  </body>
+</html>

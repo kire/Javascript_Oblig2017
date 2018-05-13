@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Oblig 3 | Oppgave 2</title>
+
+		<script>
+		
+			
+
+		window.onload = oppstart;
+		// lager 2 arrayen med informasjon skal skal brukes i oppgaven
+        var mdager = [31,28,31,30,31,30,31,31,30,31,30,31];
+        var mnavn = ["januar", "februar", "mars", "april","mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
+        
+        
+		
+		
+        function oppstart(){
+        
+            document.getElementById("btnmaaned").onclick = dager;
+		
+        }
+		
+		// Så lager jeg en variabel med verdi for å få inputen sin .value. Også setter vi paragrafen erlik mnavn som er arrayen for månedene + tekst og mdager. Siden array starter på 0, så må vi sette -1 slik at vi får riktig måned
+		function dager(){
+            var verdi = parseInt(document.getElementById("maanedtall").value);
+            
+            document.getElementById("utskrift").innerHTML = mnavn[verdi-1] + " har " + mdager[verdi-1] + " dager."
+            
+        }
+
+		</script>
+		
+		
+	</head>
+	<body>
+		
+	<a href="Oppgave1.html">Oppgave1</a>
+		<a href="Oppgave2.html">Oppgave2</a>
+		<a href="Oppgave3.html">Oppgave3</a>
+		<a href="Oppgave4.html">Oppgave4</a>
+		<a href="Oppgave5.html">Oppgave5</a>
+		<a href="Oppgave6.html">Oppgave6</a>
+		<a href="Oppgave7.html">Oppgave7</a>
+		<a href="Oppgave8.html">Oppgave8</a>
+
+		<p>Skriv inn tallet for en måned og sjekk hvor mange dager den inneholder </p>
+
+		<section>
+		
+		<input type="number" id="maanedtall">
+		<button id="btnmaaned">Hvor mange dager inneholder denne måneden?</button>
+		<p id="utskrift"></p>
+
+
+
+
+	
+	</body>
+</html>
